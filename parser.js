@@ -20,7 +20,7 @@ class PersonParser {
   constructor(file) {
     this._file = file;
     // this._file = fs.readFileSync(file, 'utf-8').trim();
-    this._people = this.people;
+    this._people = this.parser();
   }
 
   get file() {
@@ -28,6 +28,14 @@ class PersonParser {
   }
 
   get people() {
+    return this._people;
+  }
+
+  get size() {
+    return this._people.length;
+  }
+
+  parser() {
     let data = fs.readFileSync(this._file, 'utf-8').trim();
     // let data = this._file;
     let line = data.split('\n')
@@ -41,13 +49,10 @@ class PersonParser {
     return peopleInfo;
   }
 
-  get size() {
-    return this.people.length;
-  }
-
   addPerson(baru) {
     let idBaru = this._people.length + 1;
-    let entry = `\n${idBaru}, ${baru.first_name}, ${baru.last_name}, ${baru.email}, ${baru.phone}, ${baru.created_at}`;
+    // let entry = `\n${baru.id}, ${baru.first_name}, ${baru.last_name}, ${baru.email}, ${baru.phone}, ${baru.created_at}`;
+    let entry = `\n${idBaru}, ${baru.first_name}`;
     // debugger;
     fs.appendFileSync(this._file, entry, 'utf-8');
   }
@@ -56,7 +61,7 @@ class PersonParser {
 
 let parser = new PersonParser('people.csv');
 
-// parser.addPerson(new Person(11, 'New', 'Person', 'fake@email.com', '1234567890', new Date().toISOString()));
+parser.addPerson(new Person(11, 'New', 'Person', 'fake@email.com', '1234567890', new Date().toISOString()));
 console.log(parser.people);
 
 // console.log(`There are ${parser.people.size} people in the file '${parser.file}'.`);
