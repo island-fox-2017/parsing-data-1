@@ -58,7 +58,7 @@ class PersonParser {
 
   writePeople(inputPeople){
     let fs = require('fs')
-    let string = `${inputPeople.id},${inputPeople.firstName},${inputPeople.lastName},${inputPeople.lastName},${inputPeople.email},${inputPeople.phone},${inputPeople.createdAt}`;
+    let string = `${inputPeople.id},${inputPeople.firstName},${inputPeople.lastName},${inputPeople.email},${inputPeople.phone},${inputPeople.createdAt}\n`;
     fs.appendFileSync(this._file, string, 'utf-8')
     
   }
@@ -67,7 +67,8 @@ class PersonParser {
 let parser = new PersonParser('people.csv')
 // console.log(parser.inputPeople());
 console.log(parser._people.length);
+
+parser.addPerson(new Person(201, 'Lisa', 'Kusumawati', 'miss.lizz@gmail.com', '1-703-520-4121', '16 Maret 1986'))
 console.log(`There are ${parser._people.length} people in the file '${parser.file}'.`)
-// parser.addPerson(new Person(201, 'Abdul gani', 'Rusli', 'rusli.gani88@gmail.com', '1-703-520-4121', '24 Januari 1988'))
 console.log(parser._people[200]);
 console.log(parser._people[150].email)
