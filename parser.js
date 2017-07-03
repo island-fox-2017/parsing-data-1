@@ -54,6 +54,8 @@ class PersonParser {
 let parser = new PersonParser('people.csv')
 console.log(parser.parser());
 console.log();
+
 let nextId = parseInt(parser._people[parser._people.length - 1].id) + 1;
 parser.addPerson(`${nextId},AMcKenzie,Aurris,Aauris.Aorbi.non@nequeNullam.com,2-906-235-0832,3013-07-06T07:23:09-07:00\n`);
-//console.log(`There are ${parser.people.size} people in the file '${parser.file}'.`)
+
+console.log(`There are ${parser._people.length} people in the file '${parser._file}'.`)
