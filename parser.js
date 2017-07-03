@@ -64,11 +64,12 @@ class PersonParser {
   }
 }
 
-let parser = new PersonParser('people.csv')
+let parser = new PersonParser('people.csv');
+// parser.getData()
 // console.log(parser.inputPeople());
 console.log(parser._people.length);
 
-parser.addPerson(new Person(201, 'Lisa', 'Kusumawati', 'miss.lizz@gmail.com', '1-703-520-4121', '16 Maret 1986'))
+// parser.addPerson(new Person(202, 'Rizqi', 'Agna Sari', 'agna.sari@gmail.com', '1-101-520-1111', '20 Maret 1996'))
 console.log(`There are ${parser._people.length} people in the file '${parser.file}'.`)
-console.log(parser._people[200]);
-console.log(parser._people[150].email)
+console.log(parser._people[203]);
+console.log(parser._people[201].email)
